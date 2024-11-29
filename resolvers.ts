@@ -7,9 +7,10 @@ export const resolvers = {
 
         //tiene los argumentos opcionales origen y destino. Si ambos argumentos están presentes devuelve todos los vuelos con dicho origen y destino, si solo un argumento está presente, por ejemplo el origen, devuelve todos los vuelos con ese origen, si ningún argumento está presente devuelve todos los vuelos (incluyendo sus ids).
         getFlights: async(_:unknown, {origin, destination}: { origin?: string, destination?: string }, context : { FlightsModel: Collection<FlightsModel> }): Promise<Flights[]> => {
+            
             const miFlightModel = await context.FlightsModel.find().toArray();
-            return miFlightModel.map((elem) => fromModelToFlihts(elem));
-              
+            
+            return miFlightModel.map((elem) => fromModelToFlihts(elem));  
         
         },
 
